@@ -29,17 +29,53 @@
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
+        .header-left h1 {
             color: #333;
             font-size: 28px;
             margin-bottom: 5px;
         }
 
-        header p {
+        .header-left p {
             color: #666;
             font-size: 14px;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .user-info {
+            background: #f0f4ff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .user-info strong {
+            color: #667eea;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background: #f56565;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #e53e3e;
+            transform: translateY(-2px);
         }
 
         .dashboard-grid {
@@ -165,8 +201,56 @@
             font-size: 14px;
         }
 
+        .not-logged-in {
+            background: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .not-logged-in h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .not-logged-in p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .not-logged-in a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .not-logged-in a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
         @media (max-width: 768px) {
-            header h1 {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .header-right {
+                text-align: left;
+                width: 100%;
+            }
+
+            .header-left h1 {
                 font-size: 20px;
             }
 
@@ -177,81 +261,101 @@
             .bar-chart {
                 height: 200px;
             }
+
+            .logout-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Header dengan User Info -->
         <header>
-            <h1>📊 Dashboard Sederhana</h1>
-            <p>Selamat datang di dashboard Anda. Informasi real-time tersedia di bawah ini.</p>
+            <div class="header-left">
+                <h1>📊 Dashboard Sederhana</h1>
+                <p>Selamat datang di dashboard Anda. Informasi real-time tersedia di bawah ini.</p>
+            </div>
+            <div class="header-right" id="headerRight">
+                <!-- User info akan ditampilkan di sini -->
+            </div>
         </header>
 
-        <!-- Dashboard Cards -->
-        <div class="dashboard-grid">
-            <!-- Card 1 -->
-            <div class="card blue">
-                <div class="card-icon">👥</div>
-                <div class="card-title">Total Pengguna</div>
-                <div class="card-value">1,234</div>
-                <div class="card-description">Pengguna aktif bulan ini</div>
+        <!-- Konten Dashboard -->
+        <div id="dashboardContent" style="display: none;">
+            <!-- Dashboard Cards -->
+            <div class="dashboard-grid">
+                <!-- Card 1 -->
+                <div class="card blue">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">Total Pengguna</div>
+                    <div class="card-value">1,234</div>
+                    <div class="card-description">Pengguna aktif bulan ini</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card green">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Total Pendapatan</div>
+                    <div class="card-value">Rp 5.2M</div>
+                    <div class="card-description">Pendapatan bulan ini</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card orange">
+                    <div class="card-icon">📈</div>
+                    <div class="card-title">Pertumbuhan</div>
+                    <div class="card-value">+23%</div>
+                    <div class="card-description">Dibanding bulan lalu</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card red">
+                    <div class="card-icon">⚠️</div>
+                    <div class="card-title">Peringatan</div>
+                    <div class="card-value">5</div>
+                    <div class="card-description">Item yang perlu perhatian</div>
+                </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="card green">
-                <div class="card-icon">💰</div>
-                <div class="card-title">Total Pendapatan</div>
-                <div class="card-value">Rp 5.2M</div>
-                <div class="card-description">Pendapatan bulan ini</div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card orange">
-                <div class="card-icon">📈</div>
-                <div class="card-title">Pertumbuhan</div>
-                <div class="card-value">+23%</div>
-                <div class="card-description">Dibanding bulan lalu</div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card red">
-                <div class="card-icon">⚠️</div>
-                <div class="card-title">Peringatan</div>
-                <div class="card-value">5</div>
-                <div class="card-description">Item yang perlu perhatian</div>
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <h2>📉 Statistik Penjualan (Januari - Juni)</h2>
+                <div class="bar-chart">
+                    <div class="bar" style="height: 40%;">
+                        <div class="bar-value">40%</div>
+                        <div class="bar-label">Jan</div>
+                    </div>
+                    <div class="bar" style="height: 55%;">
+                        <div class="bar-value">55%</div>
+                        <div class="bar-label">Feb</div>
+                    </div>
+                    <div class="bar" style="height: 65%;">
+                        <div class="bar-value">65%</div>
+                        <div class="bar-label">Mar</div>
+                    </div>
+                    <div class="bar" style="height: 50%;">
+                        <div class="bar-value">50%</div>
+                        <div class="bar-label">Apr</div>
+                    </div>
+                    <div class="bar" style="height: 75%;">
+                        <div class="bar-value">75%</div>
+                        <div class="bar-label">May</div>
+                    </div>
+                    <div class="bar" style="height: 90%;">
+                        <div class="bar-value">90%</div>
+                        <div class="bar-label">Jun</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Chart Section -->
-        <div class="chart-section">
-            <h2>📉 Statistik Penjualan (Januari - Juni)</h2>
-            <div class="bar-chart">
-                <div class="bar" style="height: 40%;">
-                    <div class="bar-value">40%</div>
-                    <div class="bar-label">Jan</div>
-                </div>
-                <div class="bar" style="height: 55%;">
-                    <div class="bar-value">55%</div>
-                    <div class="bar-label">Feb</div>
-                </div>
-                <div class="bar" style="height: 65%;">
-                    <div class="bar-value">65%</div>
-                    <div class="bar-label">Mar</div>
-                </div>
-                <div class="bar" style="height: 50%;">
-                    <div class="bar-value">50%</div>
-                    <div class="bar-label">Apr</div>
-                </div>
-                <div class="bar" style="height: 75%;">
-                    <div class="bar-value">75%</div>
-                    <div class="bar-label">May</div>
-                </div>
-                <div class="bar" style="height: 90%;">
-                    <div class="bar-value">90%</div>
-                    <div class="bar-label">Jun</div>
-                </div>
-            </div>
+        <!-- Pesan jika belum login -->
+        <div id="notLoggedInContent" class="not-logged-in" style="display: none;">
+            <h2>🔐 Akses Ditolak</h2>
+            <p>Anda harus login terlebih dahulu untuk mengakses dashboard ini.</p>
+            <a href="login.html">🔓 Login</a>
+            <a href="form-validation.html">📝 Daftar Baru</a>
         </div>
 
         <!-- Footer -->
@@ -259,5 +363,59 @@
             <p>© 2024 Dashboard Sederhana | Dibuat dengan HTML & CSS</p>
         </footer>
     </div>
+
+    <script>
+        // Cek apakah user sudah login
+        function checkLogin() {
+            const userLoggedIn = localStorage.getItem('userLoggedIn');
+            const dashboardContent = document.getElementById('dashboardContent');
+            const notLoggedInContent = document.getElementById('notLoggedInContent');
+            const headerRight = document.getElementById('headerRight');
+
+            if (userLoggedIn) {
+                try {
+                    const user = JSON.parse(userLoggedIn);
+                    
+                    // Tampilkan dashboard
+                    dashboardContent.style.display = 'block';
+                    notLoggedInContent.style.display = 'none';
+
+                    // Tampilkan info user di header
+                    headerRight.innerHTML = `
+                        <div class="user-info">
+                            <strong>Email:</strong> ${user.email}<br>
+                            <strong>Login:</strong> ${user.loginTime}
+                        </div>
+                        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+                    `;
+
+                    console.log('✅ User sudah login:', user);
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    showNotLoggedIn();
+                }
+            } else {
+                showNotLoggedIn();
+            }
+        }
+
+        // Tampilkan halaman tidak login
+        function showNotLoggedIn() {
+            document.getElementById('dashboardContent').style.display = 'none';
+            document.getElementById('notLoggedInContent').style.display = 'block';
+            document.getElementById('headerRight').innerHTML = '';
+        }
+
+        // Fungsi logout
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            console.log('🚪 User logout');
+            alert('Anda telah logout. Redirect ke login...');
+            window.location.href = 'login.html';
+        }
+
+        // Jalankan saat halaman dimuat
+        checkLogin();
+    </script>
 </body>
 </html>
