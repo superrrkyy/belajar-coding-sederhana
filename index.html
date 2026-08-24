@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Coding Sederhana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .home-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            background: #f0f4ff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .features h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            color: #555;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li:before {
+            content: "✅";
+            font-size: 18px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        .btn {
+            padding: 16px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+            transform: translateY(-3px);
+        }
+
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #38a169;
+            transform: translateY(-3px);
+        }
+
+        .files-info {
+            background: #fffbeb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .files-info h4 {
+            color: #b45309;
+            margin-bottom: 12px;
+        }
+
+        .files-info p {
+            color: #92400e;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .home-container {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <h1>🎓 Belajar Coding Sederhana</h1>
+        <p class="subtitle">Platform pembelajaran interaktif untuk pemula dengan HTML5, CSS3, dan JavaScript</p>
+
+        <div class="features">
+            <h3>📚 Fitur Utama:</h3>
+            <ul class="feature-list">
+                <li>Form Pendaftaran dengan Validasi HTML5</li>
+                <li>Sistem Login & Logout Sederhana</li>
+                <li>Dashboard Responsif dengan CSS3</li>
+                <li>Penyimpanan Data Lokal (LocalStorage)</li>
+                <li>Animasi & Transisi Modern</li>
+                <li>Mobile-Friendly Design</li>
+            </ul>
+        </div>
+
+        <div class="button-group">
+            <a href="login.html" class="btn btn-primary">🔐 Login</a>
+            <a href="form-validation.html" class="btn btn-success">📝 Daftar Baru</a>
+            <a href="dashboard.html" class="btn btn-secondary">📊 Lihat Dashboard</a>
+        </div>
+
+        <div class="files-info">
+            <h4>📁 File-file yang tersedia:</h4>
+            <p><strong>• index.html</strong> - Halaman utama (Anda di sini)</p>
+            <p><strong>• login.html</strong> - Halaman login</p>
+            <p><strong>• form-validation.html</strong> - Form pendaftaran dengan validasi</p>
+            <p><strong>• dashboard.html</strong> - Dashboard (hanya bisa diakses setelah login)</p>
+        </div>
+    </div>
+</body>
+</html>
