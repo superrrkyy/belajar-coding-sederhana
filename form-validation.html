@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form HTML5 dengan Validasi</title>
+    <title>Form Pendaftaran - Belajar Coding</title>
     <style>
         * {
             margin: 0;
@@ -184,10 +184,40 @@
             border-radius: 8px;
             margin-bottom: 20px;
             display: none;
+            text-align: center;
+            animation: slideDown 0.5s ease;
         }
 
         .success-message.show {
             display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 600px) {
@@ -216,7 +246,7 @@
             <p class="subtitle">Isi formulir dengan data yang benar</p>
 
             <div class="success-message" id="successMessage">
-                ✅ Form berhasil dikirim!
+                ✅ Pendaftaran berhasil! Redirect ke Dashboard...
             </div>
 
             <form id="registrationForm" novalidate>
@@ -377,6 +407,10 @@
                     <button type="reset" class="reset-btn">🔄 Bersihkan</button>
                 </div>
             </form>
+
+            <div class="links">
+                Sudah punya akun? <a href="login.html">Login di sini</a>
+            </div>
         </div>
     </div>
 
@@ -402,12 +436,28 @@
             if (form.checkValidity() === false) {
                 alert('❌ Periksa kembali form!');
             } else {
+                // Simpan data ke localStorage
+                const formData = new FormData(form);
+                localStorage.setItem('userLoggedIn', JSON.stringify({
+                    nama: formData.get('fullName'),
+                    email: formData.get('email'),
+                    telepon: formData.get('phone'),
+                    usia: formData.get('age'),
+                    alamat: formData.get('address'),
+                    kota: formData.get('city'),
+                    gender: formData.get('gender'),
+                    isLoggedIn: true,
+                    loginTime: new Date().toLocaleString('id-ID')
+                }));
+
+                // Tampilkan pesan sukses
                 successMessage.classList.add('show');
-                console.log('✅ Form berhasil dikirim!');
+                console.log('✅ Pendaftaran berhasil!');
+                console.log('📤 Data tersimpan');
                 
+                // Redirect ke dashboard setelah 2 detik
                 setTimeout(() => {
-                    form.reset();
-                    successMessage.classList.remove('show');
+                    window.location.href = 'dashboard.html';
                 }, 2000);
             }
         });
