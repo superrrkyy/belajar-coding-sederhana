@@ -32,6 +32,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .header-left h1 {
@@ -242,16 +244,15 @@
             header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
+            }
+
+            .header-left h1 {
+                font-size: 20px;
             }
 
             .header-right {
                 text-align: left;
                 width: 100%;
-            }
-
-            .header-left h1 {
-                font-size: 20px;
             }
 
             .dashboard-grid {
@@ -271,7 +272,7 @@
 <body>
     <div class="container">
         <!-- Header dengan User Info -->
-        <header>
+        <header id="headerSection">
             <div class="header-left">
                 <h1>📊 Dashboard Sederhana</h1>
                 <p>Selamat datang di dashboard Anda. Informasi real-time tersedia di bawah ini.</p>
@@ -281,7 +282,7 @@
             </div>
         </header>
 
-        <!-- Konten Dashboard -->
+        <!-- Konten Dashboard (hanya tampil jika login) -->
         <div id="dashboardContent" style="display: none;">
             <!-- Dashboard Cards -->
             <div class="dashboard-grid">
